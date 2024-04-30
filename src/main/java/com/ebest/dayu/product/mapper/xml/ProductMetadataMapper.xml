@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebest.dayu.product.Do.ProductMetadataDo">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ebest.dayu.product.Dto.ProductMetadataDto">
+        <id column="id" property="id" />
+    <result column="deleted" property="deleted" />
+        <result column="product_no" property="productNo" />
+        <result column="sort_no" property="sortNo" />
+        <result column="stort_label" property="stortLabel" />
+        <result column="name" property="name" />
+        <result column="main_img" property="mainImg" />
+        <result column="short_video" property="shortVideo" />
+        <result column="short_description" property="shortDescription" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+        <result column="property_content" property="propertyContent" />
+        <result column="local_name" property="localName" />
+        <result column="short_name" property="shortName" />
+        <result column="short_mnemonim" property="shortMnemonim" />
+        <result column="price" property="price" />
+        <result column="retail_price" property="retailPrice" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        deleted,
+        id, product_no, sort_no, stort_label, name, main_img, short_video, short_description, gmt_create, gmt_modified, property_content, local_name, short_name, short_mnemonim, price, retail_price
+    </sql>
+
+</mapper>

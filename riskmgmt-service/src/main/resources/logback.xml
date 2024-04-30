@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <conversionRule conversionWord="trace" converterClass="com.haier.hairy.common.logging.TraceConverter"/>
+    <!-- 公共 -->
+    <property name="LOG_FORMAT" value='%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5level] {&quot;traceId&quot;:&quot;%trace&quot;}%logger{36}[%M:%L] - %m%n'/>
+    <!-- profile的枚举参考: http://192.168.180.52:8090/pages/viewpage.action?pageId=22185744 -->
+
+    <if condition='isDefined("profile")'>
+        <then>
+            <if condition='property("profile").toLowerCase().contains("qa1")'>
+                <!-- 本地环境 -->
+                <then>
+                    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                        <encoder>
+                            <pattern>${LOG_FORMAT}</pattern>
+                        </encoder>
+                    </appender>
+                    <logger name="org" level="INFO"/>
+                    <logger name="io" level="INFO"/>
+                    <logger name="org.apache.cxf" level="INFO"/>
+                    <logger name="com.haier.hairy.rmp.service" level="DEBUG"/>
+                    <root level="INFO">
+                        <appender-ref ref="STDOUT"/>
+                    </root>
+                </then>
+                <else>
+                    <!-- 非本地环境 -->
+                    <property name="APP_ID" value="${app.id}"/>
+                    <property name="DEFAULT_LOG_FILE" value="${logPath}/${app.id}/default.log"/>
+                    <property name="DEFAULT_LOG_FILE_PATTERN" value="${logPath}/${app.id}/history/default.%d{yyyy-MM-dd}.log.gz"/>
+
+                    <!--prod-->
+                    <if condition='property("profile").equalsIgnoreCase("prod")'>
+                        <then>
+                            <property name="logback.level" value="INFO"/>
+                            <property name="SENTRY_DSN"
+                              value="http://fe2948a1ba724ff79c639a6bef2ac63a:96c791e9fcd044be9fe0bca25eae80a9@sentry.lekaihua8.com:9000/30"/>
+                        </then>
+                        <else>
+                            <!--非生产环境使用debug日志级别-->
+                            <property name="logback.level" value="DEBUG"/>
+                        </else>
+                    </if>
+
+                    <appender name="FILE"
+                      class="ch.qos.logback.core.rolling.RollingFileAppender">
+                        <file>${DEFAULT_LOG_FILE}</file>
+                        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                            <fileNamePattern>${DEFAULT_LOG_FILE_PATTERN}</fileNamePattern>
+                            <!-- maxHistory>30</maxHistory -->
+                        </rollingPolicy>
+                        <encoder>
+                            <pattern>${LOG_FORMAT}</pattern>
+                        </encoder>
+                        <append>true</append>
+                    </appender>
+
+                    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+                        <discardingThreshold>0</discardingThreshold>
+                        <queueSize>512</queueSize>
+                        <appender-ref ref="FILE"/>
+                    </appender>
+
+                    <appender name="Sentry" class="com.getsentry.raven.logback.SentryAppender">
+                        <dsn>${SENTRY_DSN}</dsn>
+                        <tags>APP:${APP_ID}</tags>
+                    </appender>
+
+                    <logger name="druid.sql.Connection" level="ERROR"/>
+                    <logger name="com.netfinworks.mq.listener" level="ERROR"/>
+                    <logger name="org" level="ERROR"/>
+                    <logger name="io" level="ERROR"/>
+                    <logger name="org.apache.cxf" level="ERROR"/>
+                    <root level="${logback.level}">
+                        <appender-ref ref="FILE"/>
+                        <if condition='property("profile").equalsIgnoreCase("prod")'>
+                            <then>
+                                <!--<appender-ref ref="Sentry"/>-->
+                            </then>
+                        </if>
+                    </root>
+                </else>
+            </if>
+        </then>
+    </if>
+</configuration>

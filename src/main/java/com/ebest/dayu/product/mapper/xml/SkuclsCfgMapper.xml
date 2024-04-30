@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebest.dayu.product.Do.SkuclsCfgDo">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ebest.dayu.product.Dto.SkuclsCfgDto">
+        <id column="id" property="id" />
+    <result column="deleted" property="deleted" />
+        <result column="skucls_no" property="skuclsNo" />
+        <result column="name" property="name" />
+        <result column="owner_from" property="ownerFrom" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+        <result column="owner_id" property="ownerId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        deleted,
+        id, skucls_no, name, owner_from, gmt_create, gmt_modified, owner_id
+    </sql>
+
+</mapper>

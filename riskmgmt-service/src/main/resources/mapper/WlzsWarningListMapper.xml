@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haier.hairy.rmp.dao.WlzsWarningListDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.haier.hairy.rmp.entity.WlzsWarningListEntity">
+        <id column="id" property="id" />
+    <result column="jpa_version" property="jpaVersion" />
+    <result column="deleted" property="deleted" />
+    <result column="remark" property="remark" />
+    <result column="created_time" property="createdTime" />
+    <result column="updated_time" property="updatedTime" />
+        <result column="report_date" property="reportDate" />
+        <result column="corp_id" property="corpId" />
+        <result column="corp_name" property="corpName" />
+        <result column="level" property="level" />
+        <result column="level_name" property="levelName" />
+        <result column="alerted_date" property="alertedDate" />
+        <result column="category" property="category" />
+        <result column="category_desc" property="categoryDesc" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        jpa_version,
+        deleted,
+        remark,
+        created_time,
+        updated_time,
+        id, report_date, corp_id, corp_name, level, level_name, alerted_date, category, category_desc
+    </sql>
+
+</mapper>

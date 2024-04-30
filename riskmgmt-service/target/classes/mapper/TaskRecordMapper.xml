@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haier.hairy.rmp.dao.TaskRecordDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.haier.hairy.rmp.entity.TaskRecordEntity">
+        <id column="id" property="id" />
+    <result column="jpa_version" property="jpaVersion" />
+    <result column="deleted" property="deleted" />
+    <result column="remark" property="remark" />
+    <result column="created_time" property="createdTime" />
+    <result column="updated_time" property="updatedTime" />
+        <result column="report_date" property="reportDate" />
+        <result column="report_type" property="reportType" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="task_status" property="taskStatus" />
+        <result column="notice_time" property="noticeTime" />
+        <result column="notice_status" property="noticeStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        jpa_version,
+        deleted,
+        remark,
+        created_time,
+        updated_time,
+        id, report_date, report_type, start_time, end_time, task_status, notice_time, notice_status
+    </sql>
+
+</mapper>

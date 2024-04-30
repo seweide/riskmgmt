@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebest.dayu.product.Do.ProductUnitDo">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ebest.dayu.product.Dto.ProductUnitDto">
+        <id column="id" property="id" />
+    <result column="deleted" property="deleted" />
+        <result column="product_id" property="productId" />
+        <result column="unit_type" property="unitType" />
+        <result column="bar_code" property="barCode" />
+        <result column="conversion_ratio" property="conversionRatio" />
+        <result column="weitght" property="weitght" />
+        <result column="longs" property="longs" />
+        <result column="wide" property="wide" />
+        <result column="high" property="high" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+        <result column="property_content" property="propertyContent" />
+        <result column="onshelf" property="onshelf" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        deleted,
+        id, product_id, unit_type, bar_code, conversion_ratio, weitght, longs, wide, high, gmt_create, gmt_modified, property_content, onshelf
+    </sql>
+
+</mapper>

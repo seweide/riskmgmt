@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haier.hairy.rmp.dao.DtsMonthSumDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.haier.hairy.rmp.entity.DtsMonthSumEntity">
+        <id column="id" property="id" />
+    <result column="jpa_version" property="jpaVersion" />
+    <result column="deleted" property="deleted" />
+    <result column="remark" property="remark" />
+    <result column="created_time" property="createdTime" />
+    <result column="updated_time" property="updatedTime" />
+        <result column="khbm" property="khbm" />
+        <result column="khmc" property="khmc" />
+        <result column="qy" property="qy" />
+        <result column="qd" property="qd" />
+        <result column="rq" property="rq" />
+        <result column="hzsc" property="hzsc" />
+        <result column="jhsj" property="jhsj" />
+        <result column="mdsl" property="mdsl" />
+        <result column="thje" property="thje" />
+        <result column="thsl" property="thsl" />
+        <result column="thcs" property="thcs" />
+        <result column="lyl" property="lyl" />
+        <result column="hfyt" property="hfyt" />
+        <result column="syzc" property="syzc" />
+        <result column="smzq" property="smzq" />
+        <result column="lsjz" property="lsjz" />
+        <result column="aqjz" property="aqjz" />
+        <result column="qljz" property="qljz" />
+        <result column="wljz" property="wljz" />
+        <result column="xhb" property="xhb" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        jpa_version,
+        deleted,
+        remark,
+        created_time,
+        updated_time,
+        id, khbm, khmc, qy, qd, rq, hzsc, jhsj, mdsl, thje, thsl, thcs, lyl, hfyt, syzc, smzq, lsjz, aqjz, qljz, wljz, xhb
+    </sql>
+
+</mapper>

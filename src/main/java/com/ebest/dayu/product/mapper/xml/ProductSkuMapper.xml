@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebest.dayu.product.Do.ProductSkuDo">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ebest.dayu.product.Dto.ProductSkuDto">
+        <id column="id" property="id" />
+        <result column="prd_id" property="prdId" />
+        <result column="sku_content" property="skuContent" />
+        <result column="media_url" property="mediaUrl" />
+        <result column="upc" property="upc" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+        <result column="sku_no" property="skuNo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, prd_id, sku_content, media_url, upc, gmt_create, gmt_modified, sku_no
+    </sql>
+
+</mapper>
